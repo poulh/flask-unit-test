@@ -4,9 +4,11 @@ from flask_restful import Api, Resource, reqparse
 app = Flask(__name__)
 api = Api(app)
 
+
 @app.route("/")
 def hello_world():
     return "<p>Hello, World!</p>"
+
 
 class DemoApiEndpoint(Resource):
     def __init__(self):
@@ -15,6 +17,7 @@ class DemoApiEndpoint(Resource):
                                     type=str,
                                     help="You must include a name string with this post request.",
                                     required=True)
+
     def get(self):
         return {
             "message": "This is a response from a GET request."
@@ -26,6 +29,7 @@ class DemoApiEndpoint(Resource):
         return {
             "message": f'Nice to meet you, {name}!'
         }
+
 
 api.add_resource(DemoApiEndpoint, "/api/DemoApiEndpoint")
 
